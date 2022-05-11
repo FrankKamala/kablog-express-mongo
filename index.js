@@ -1,8 +1,11 @@
 const express = require('express')
 const path = require('path')
 const ejs = require('ejs')
+const mongoose = require('mongoose')
 const app = express()
 const port = 3000
+mongoose.connect('mongodb://localhost/blog_db', {useNewUrlParser: true})
+
 app.use(express.static('public'))
 app.set('view engine','ejs')
 
