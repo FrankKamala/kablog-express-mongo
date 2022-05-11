@@ -2,10 +2,14 @@ const express = require('express')
 const path = require('path')
 const ejs = require('ejs')
 const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
+
 const app = express()
 const port = 3000
 mongoose.connect('mongodb://localhost/blog_db', {useNewUrlParser: true})
 
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static('public'))
 app.set('view engine','ejs')
 
@@ -29,6 +33,10 @@ app.get('/posts/new', (req, res) => {
 // app.post('/home',  (req, res) =>{
 //   res.send('Jungle!')
 // })
+app.post('/posts/store',(req,res)=>{
+  console.log(req.body)
+  res.redirect('/')
+})
 
 
 app.listen(port, () => {
