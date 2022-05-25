@@ -14,8 +14,8 @@
                             <h2 class="subheading"><%=post.body%></h2>
                             <span class="meta">
                                 Posted by
-                                <a href="#!">Start Bootstrap</a>
-                                on August 24, 2022
+                                <a href="#!"><%post.author%></a>
+                                on <%=post.dateCreated.toDateString()%>
                             </span>
                         </div>
                     </div>
