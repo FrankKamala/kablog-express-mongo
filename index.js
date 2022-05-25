@@ -37,6 +37,7 @@ app.get('/post/:id', async(req, res) => {
  res.render('post',{
   post
   })
+//console.log(post)
 
 
  res.render('post')
