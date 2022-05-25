@@ -31,8 +31,14 @@ app.get('/about', (req, res) => {
 app.get('/contact', (req, res) => {
   res.render('contact')
 })
-app.get('/post', (req, res) => {
+app.get('/post/:id', async(req, res) => {
  // res.sendFile(path.resolve(__dirname,'public/post.html'))
+ const post = await BlogPost.findById(req.params.id)
+ res.render('post',{
+  post
+  })
+
+
  res.render('post')
 })
 app.get('/posts/new', (req, res) => {
