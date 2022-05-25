@@ -5,10 +5,10 @@ const BlogPostSchema = new Schema({
 
     title:String,
     body:String,
-    user: String,
+    author: String,
     dateCreated:{
         type:Date, 
-        default: newDate()}
+        default: new Date()}
 });
 
 const BlogPost = mongoose.model('BlogPost',BlogPostSchema);
