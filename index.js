@@ -39,6 +39,11 @@ app.get('/posts/new', (req, res) => {
   // res.sendFile(path.resolve(__dirname,'public/post.html'))
   res.render('create')
  })
+
+ app.get('/api/view/posts',async(req,res)=>{
+   const allBlogs = await BlogPost.find()
+   res.json({allBlogs})
+ })
 // app.post('/home',  (req, res) =>{
 //   res.send('Jungle!')
 // })
