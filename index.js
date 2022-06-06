@@ -1,6 +1,8 @@
 const express = require('express')
 const path = require('path')
 const ejs = require('ejs')
+const fileUpload = require('express-fileupload')
+
 
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
@@ -17,6 +19,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static('public'))
 app.set('view engine','ejs')
+app.use(fileUpload())
 
 app.get('/', async(req, res) => {
   const blogposts = await BlogPost.find()
@@ -64,9 +67,14 @@ app.get('/posts/new', (req, res) => {
 //   }
 //   )
 //   }) drop callback hells
-app.post('/posts/store', async (req,res)=>{
-  await BlogPost.create(req.body)
-  res.redirect('/')
+app.post('/posts/store',  (req,res)=>{
+  let image = req.files.image;
+image.mv(path.resolve(__dirname,'public/img',image.name),async(error)=>{
+await BlogPost.create(req.body)
+res.redirect('/')
+  // await BlogPost.create(req.body)
+  // res.redirect('/')
+})
   })
 
 
