@@ -69,7 +69,7 @@ app.get('/posts/new', (req, res) => {
 //   }) drop callback hells
 app.post('/posts/store',  (req,res)=>{
   let image = req.files.image;
-image.mv(path.resolve(__dirname,'public/img',image.name),async(error)=>{
+image.mv(path.resolve(__dirname,'public/uploaded/img',image.name),async(error)=>{
 await BlogPost.create(req.body)
 res.redirect('/')
   // await BlogPost.create(req.body)
