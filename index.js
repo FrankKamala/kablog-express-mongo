@@ -70,7 +70,7 @@ app.get('/posts/new', (req, res) => {
 app.post('/posts/store',  (req,res)=>{
   let image = req.files.image;
 image.mv(path.resolve(__dirname,'public/uploaded/img',image.name),async(error)=>{
-await BlogPost.create(req.body)
+await BlogPost.create({...req.body,image:'/uploaded/img/'+image.name})
 res.redirect('/')
   // await BlogPost.create(req.body)
   // res.redirect('/')
