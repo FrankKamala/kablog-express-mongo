@@ -13,6 +13,8 @@ const validateMiddleWare = (req,res,next)=>{
   const newPostController = require('./controllers/newPost')
   const aboutController = require('./controllers/aboutPage')
   const contactController =  require('./controllers/contactPage')
+  const savePostController = require('./controllers/storePosts')
+  const getPostController = require('./controllers/getSinglePost')
 
 
 const bodyParser = require('body-parser')
@@ -45,6 +47,8 @@ app.get('/', async(req, res) => {
 // })
 app.get('/about',aboutController)
 app.get('/contact',contactController)
+app.get('/post/:id',getPostController)
+app.post('/posts/store', savePostController)
 
 
 // app.get('/posts/new', (req, res) => {

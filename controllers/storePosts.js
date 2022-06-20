@@ -11,3 +11,5 @@ res.redirect('/')
 })
 
 }
+//add ‘ .. ’ to path.resolve
+//because we have to go up one folder before referring to public/img.
