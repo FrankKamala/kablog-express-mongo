@@ -9,6 +9,11 @@ const validateMiddleWare = (req,res,next)=>{
   next()
   }
 
+  // from cont
+  const newPostController = require('./controllers/newPost')
+  const aboutController = require('./controllers/aboutPage')
+  const contactController =  require('./controllers/contactPage')
+
 
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
@@ -35,12 +40,11 @@ app.get('/', async(req, res) => {
   //or {blogposts}
   )
 })
-app.get('/about', (req, res) => {
-  res.render('about')
-})
-app.get('/contact', (req, res) => {
-  res.render('contact')
-})
+// app.get('/about', (req, res) => {
+//   res.render('about')
+// })
+app.get('/about',aboutController)
+
 app.get('/post/:id', async(req, res) => {
  // res.sendFile(path.resolve(__dirname,'public/post.html'))
  const post = await BlogPost.findById(req.params.id)
@@ -52,10 +56,11 @@ app.get('/post/:id', async(req, res) => {
 
  res.render('post')
 })
-app.get('/posts/new', (req, res) => {
-  // res.sendFile(path.resolve(__dirname,'public/post.html'))
-  res.render('create')
- })
+// app.get('/posts/new', (req, res) => {
+//   // res.sendFile(path.resolve(__dirname,'public/post.html'))
+//   res.render('create')
+//  }) refac
+app.get('/posts/new',newPostController)
 
  app.get('/api/view/posts',async(req,res)=>{
    const allBlogs = await BlogPost.find()
