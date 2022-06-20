@@ -46,17 +46,7 @@ app.get('/', async(req, res) => {
 app.get('/about',aboutController)
 app.get('/contact',contactController)
 
-app.get('/post/:id', async(req, res) => {
- // res.sendFile(path.resolve(__dirname,'public/post.html'))
- const post = await BlogPost.findById(req.params.id)
- res.render('post',{
-  post:post
-  })
-//console.log(post)
 
-
- res.render('post')
-})
 // app.get('/posts/new', (req, res) => {
 //   // res.sendFile(path.resolve(__dirname,'public/post.html'))
 //   res.render('create')
@@ -80,15 +70,7 @@ app.get('/posts/new',newPostController)
 //   }
 //   )
 //   }) drop callback hells
-app.post('/posts/store',  (req,res)=>{
-  let image = req.files.image;
-image.mv(path.resolve(__dirname,'public/uploaded/img',image.name),async(error)=>{
-await BlogPost.create({...req.body,image:'/uploaded/img/'+image.name})
-res.redirect('/')
-  // await BlogPost.create(req.body)
-  // res.redirect('/')
-})
-  })
+
 
 
 
