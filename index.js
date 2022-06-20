@@ -44,6 +44,7 @@ app.get('/', async(req, res) => {
 //   res.render('about')
 // })
 app.get('/about',aboutController)
+app.get('/contact',contactController)
 
 app.get('/post/:id', async(req, res) => {
  // res.sendFile(path.resolve(__dirname,'public/post.html'))
