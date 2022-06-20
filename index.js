@@ -1,5 +1,4 @@
 const express = require('express')
-const path = require('path')
 const ejs = require('ejs')
 const fileUpload = require('express-fileupload')
 const validateMiddleWare = (req,res,next)=>{
