@@ -1,12 +1,8 @@
 const express = require('express')
 const ejs = require('ejs')
 const fileUpload = require('express-fileupload')
-const validateMiddleWare = (req,res,next)=>{
-  if(req.files == null || req.body.title == null || req.body.title == null){
-  return res.redirect('/posts/new')
-  }
-  next()
-  }
+const validateMiddleWare = require('./middlewares/validationMidddleware')
+
 
   // from cont
   const newPostController = require('./controllers/newPost')
