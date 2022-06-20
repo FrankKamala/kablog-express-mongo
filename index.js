@@ -2,6 +2,12 @@ const express = require('express')
 const path = require('path')
 const ejs = require('ejs')
 const fileUpload = require('express-fileupload')
+const validateMiddleWare = (req,res,next)=>{
+  if(req.files == null || req.body.title == null || req.body.title == null){
+  return res.redirect('/posts/new')
+  }
+  next()
+  }
 
 
 const bodyParser = require('body-parser')
@@ -20,6 +26,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static('public'))
 app.set('view engine','ejs')
 app.use(fileUpload())
+app.use('/posts/store',validateMiddleWare)
 
 app.get('/', async(req, res) => {
   const blogposts = await BlogPost.find()
