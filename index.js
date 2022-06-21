@@ -12,7 +12,7 @@ const validateMiddleWare = require('./middlewares/validationMidddleware')
   const getPostController = require('./controllers/getSinglePost')
   const signInController = require('./controllers/signIn')
   const signUpController = require('./controllers/signUp')
-  const registerUserController =  require('./controllers/registerUser').default
+  const registerUserController =  require('./controllers/registerUser')
 
 
 const bodyParser = require('body-parser')
@@ -49,7 +49,7 @@ app.get('/post/:id',getPostController)
 app.post('/posts/store', savePostController)
 app.get('/auth/signIn',signInController)
 app.get('/auth/signUp',signUpController)
-app.get('/users/register',registerUserController)
+app.post('/users/register',registerUserController)
 
 
 // app.get('/posts/new', (req, res) => {
