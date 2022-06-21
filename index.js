@@ -10,6 +10,8 @@ const validateMiddleWare = require('./middlewares/validationMidddleware')
   const contactController =  require('./controllers/contactPage')
   const savePostController = require('./controllers/storePosts')
   const getPostController = require('./controllers/getSinglePost')
+  const signInController = require('./controllers/signIn')
+  const signUpController = require('./controllers/signUp')
 
 
 const bodyParser = require('body-parser')
@@ -44,6 +46,8 @@ app.get('/about',aboutController)
 app.get('/contact',contactController)
 app.get('/post/:id',getPostController)
 app.post('/posts/store', savePostController)
+app.get('/signIn',signInController)
+app.get('/signUp',signUpController)
 
 
 // app.get('/posts/new', (req, res) => {
