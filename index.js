@@ -46,8 +46,8 @@ app.get('/about',aboutController)
 app.get('/contact',contactController)
 app.get('/post/:id',getPostController)
 app.post('/posts/store', savePostController)
-app.get('/signIn',signInController)
-app.get('/signUp',signUpController)
+app.get('/auth/signIn',signInController)
+app.get('/auth/signUp',signUpController)
 
 
 // app.get('/posts/new', (req, res) => {
