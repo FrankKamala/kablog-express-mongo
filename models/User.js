@@ -6,8 +6,17 @@ const { hash } = require('bcrypt');
 const UserSchema =  new Schema({
  first_name:String,
  second_name : String,
- username : String,
- password : String
+ //pass in a config objectfor validation of username and passwords
+ username :{
+     type:String,
+     required:true,
+     unique:true
+},
+ password : {
+     type:String,
+       required:true, 
+            
+    }
 
 
 
