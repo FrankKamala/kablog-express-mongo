@@ -4,7 +4,7 @@ module.exports = (req,res)=>{
 User.create(req.body, (error, user) => {
     if(error){
         console.log(error)
-        return res.redirect('auth/signUp')
+        return res.redirect('/auth/signUp')
     }
 res.redirect('/')
 })
