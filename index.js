@@ -32,7 +32,11 @@ app.use(express.static('public'))
 app.set('view engine','ejs')
 app.use(fileUpload())
 app.use('/posts/store',validateMiddleWare)
-app.use(expressSessions({secret:"siri"}))
+app.use(expressSessions({
+  secret:"siri",
+  resave:true,
+  saveUninitialized:true
+}))
 
 app.get('/', async(req, res) => {
   const blogposts = await BlogPost.find()
