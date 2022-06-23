@@ -4,6 +4,7 @@ const fileUpload = require('express-fileupload')
 const validateMiddleWare = require('./middlewares/validationMidddleware')
 const expressSessions = require('express-session')
 
+
   // from cont
   const newPostController = require('./controllers/newPost')
   const aboutController = require('./controllers/aboutPage')
@@ -38,8 +39,10 @@ app.use(expressSessions({
   saveUninitialized:true
 }))
 
+
 app.get('/', async(req, res) => {
   const blogposts = await BlogPost.find()
+  console.log(req.session)
   res.render('index',
   {blogposts:blogposts}
   //or {blogposts}
