@@ -13,7 +13,7 @@ const validateMiddleWare = require('./middlewares/validationMidddleware')
   const signInController = require('./controllers/signIn')
   const signUpController = require('./controllers/signUp')
   const registerUserController =  require('./controllers/registerUser')
-
+  const loginUserController = require('./controllers/signInUser')
 
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
@@ -50,6 +50,7 @@ app.post('/posts/store', savePostController)
 app.get('/auth/signIn',signInController)
 app.get('/auth/signUp',signUpController)
 app.post('/users/register',registerUserController)
+app.post('/users/login',loginUserController)
 
 
 // app.get('/posts/new', (req, res) => {
