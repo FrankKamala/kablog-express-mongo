@@ -2,7 +2,7 @@ const express = require('express')
 const ejs = require('ejs')
 const fileUpload = require('express-fileupload')
 const validateMiddleWare = require('./middlewares/validationMidddleware')
-
+const expressSessions = require('express-session')
 
   // from cont
   const newPostController = require('./controllers/newPost')
@@ -32,6 +32,7 @@ app.use(express.static('public'))
 app.set('view engine','ejs')
 app.use(fileUpload())
 app.use('/posts/store',validateMiddleWare)
+app.use(expressSessions({secret:"siri"}))
 
 app.get('/', async(req, res) => {
   const blogposts = await BlogPost.find()
