@@ -2,6 +2,7 @@ const express = require('express')
 const ejs = require('ejs')
 const fileUpload = require('express-fileupload')
 const validateMiddleWare = require('./middlewares/validationMidddleware')
+const authMid=require('./middlewares/authMiddleware')
 const expressSessions = require('express-session')
 
 
@@ -54,7 +55,7 @@ app.get('/', async(req, res) => {
 app.get('/about',aboutController)
 app.get('/contact',contactController)
 app.get('/post/:id',getPostController)
-app.post('/posts/store', savePostController)
+app.post('/posts/store',authMid, savePostController)
 app.get('/auth/signIn',signInController)
 app.get('/auth/signUp',signUpController)
 app.post('/users/register',registerUserController)
@@ -65,7 +66,7 @@ app.post('/users/login',loginUserController)
 //   // res.sendFile(path.resolve(__dirname,'public/post.html'))
 //   res.render('create')
 //  }) refac
-app.get('/posts/new',newPostController)
+app.get('/posts/new',authMid,newPostController)
 
  app.get('/api/view/posts',async(req,res)=>{
    const allBlogs = await BlogPost.find()
