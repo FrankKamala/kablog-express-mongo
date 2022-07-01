@@ -16,6 +16,7 @@ const expressSessions = require('express-session')
   const signUpController = require('./controllers/signUp')
   const registerUserController =  require('./controllers/registerUser')
   const loginUserController = require('./controllers/signInUser')
+  const redirectLoggedIn = require('./middlewares/redirectIfAuthenticatedMiddleware')
 
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
@@ -56,10 +57,10 @@ app.get('/about',aboutController)
 app.get('/contact',contactController)
 app.get('/post/:id',getPostController)
 app.post('/posts/store',authMid, savePostController)
-app.get('/auth/signIn',signInController)
-app.get('/auth/signUp',signUpController)
-app.post('/users/register',registerUserController)
-app.post('/users/login',loginUserController)
+app.get('/auth/signIn',redirectLoggedIn,signInController)
+app.get('/auth/signUp',redirectLoggedIn,signUpController)
+app.post('/users/register',redirectLoggedIn,registerUserController)
+app.post('/users/login',redirectLoggedIn,loginUserController)
 
 
 // app.get('/posts/new', (req, res) => {
