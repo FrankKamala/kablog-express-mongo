@@ -27,8 +27,12 @@ mongoose.connect('mongodb://localhost/blog_db', {useNewUrlParser: true})
 
 const app = express()
 const port = 3000
+global.isLoggedIn=null;
+app.use("*",(req,res,next)=>{
+  isLoggedIn=req.session.userId;
 
-
+  next();
+});
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static('public'))
