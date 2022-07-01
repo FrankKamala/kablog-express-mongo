@@ -14,6 +14,7 @@ const expressSessions = require('express-session')
   const getPostController = require('./controllers/getSinglePost')
   const signInController = require('./controllers/signIn')
   const signUpController = require('./controllers/signUp')
+  const singnOutController =require('./controllers/signOut')
   const registerUserController =  require('./controllers/registerUser')
   const loginUserController = require('./controllers/signInUser')
   const redirectLoggedIn = require('./middlewares/redirectIfAuthenticatedMiddleware')
@@ -21,6 +22,7 @@ const expressSessions = require('express-session')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const BlogPost = require('./models/BlogPost')
+const signOut = require('./controllers/signOut')
 
 mongoose.connect('mongodb://localhost/blog_db', {useNewUrlParser: true})
 
@@ -65,6 +67,7 @@ app.get('/auth/signIn',redirectLoggedIn,signInController)
 app.get('/auth/signUp',redirectLoggedIn,signUpController)
 app.post('/users/register',redirectLoggedIn,registerUserController)
 app.post('/users/login',redirectLoggedIn,loginUserController)
+app.get('/auth/signOut',signOut)
 
 
 // app.get('/posts/new', (req, res) => {
