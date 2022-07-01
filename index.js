@@ -47,9 +47,7 @@ app.use("*",(req,res,next)=>{
 
   next();
 });
-app.use((req,res)=>{
-  res.render('404')
-})
+
 
 
 app.get('/', async(req, res) => {
@@ -72,6 +70,9 @@ app.get('/auth/signUp',redirectLoggedIn,signUpController)
 app.post('/users/register',redirectLoggedIn,registerUserController)
 app.post('/users/login',redirectLoggedIn,loginUserController)
 app.get('/auth/signOut',signOut)
+app.use((req,res)=>{
+  res.render('404')
+})
 
 
 
